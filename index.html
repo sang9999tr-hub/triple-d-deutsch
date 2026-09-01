@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triple D Deutsch - Hệ Thống Luyện Thi Tiếng Đức B2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="brand-box">
+            <div class="brand-logo"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="brand-title">Triple D</div>
+        </div>
+
+        <div class="user-profile-card">
+            <div class="avatar-box">SH</div>
+            <div>
+                <div class="user-name">Sang Hoàng</div>
+                <div class="user-badge-row">
+                    <span class="badge-mem">MEM</span>
+                    <span class="badge-coin">🪙 <span id="user-coins">329</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-section-title">Hệ Thống</div>
+        <div class="nav-item active" onclick="switchTab('tab-tong-quan', this)">
+            <div class="nav-item-content"><i class="fa-solid fa-border-all"></i><span>Tổng Quan</span></div>
+        </div>
+        <div class="nav-item" onclick="switchTab('tab-lich-trinh', this)">
+            <div class="nav-item-content"><i class="fa-solid fa-calendar-days"></i><span>Lịch Trình</span></div>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+            <div class="nav-item" onclick="toggleSubMenu('sub-kho-hoc-tap', this)">
+                <div class="nav-item-content"><i class="fa-solid fa-book-open"></i><span>Kho Học Tập</span></div>
+                <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+            </div>
+            <div id="sub-kho-hoc-tap" class="sub-menu" style="display: none;">
+                <div class="sub-item" onclick="switchTab('tab-thu-vien', this)">• Thư Viện</div>
+                <div class="sub-item" onclick="switchTab('tab-tai-lieu', this)">• Tài Liệu</div>
+                <div class="sub-item" onclick="alert('Đang tải Khóa Học..')">• Khóa Học</div>
+                <div class="sub-item" onclick="alert('Đang tải Khảo Thí..')">• Khảo Thí</div>
+                <div class="sub-item" onclick="switchTab('tab-dang-thue', this)">• Đang Thuê</div>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <div class="nav-item-content"><i class="fa-solid fa-bell"></i><span>Thông Báo</span></div>
+            <span style="background: #ef4444; color: white; font-size: 0.7rem; font-weight: 800; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">1</span>
+        </div>
+
+        <div class="nav-section-title">HỘI VIÊN</div>
+        <div class="nav-item" onclick="openModal('modal-upgrade')">
+            <div class="nav-item-content"><i class="fa-solid fa-gem"></i><span>Nâng Cấp Tài Khoản</span></div>
+        </div>
+
+        <div class="nav-section-title">HỖ TRỢ</div>
+        <div class="nav-item"><div class="nav-item-content"><i class="fa-solid fa-circle-question"></i><span>Hướng Dẫn Sử Dụng</span></div></div>
+        
+        <div class="nav-item" style="color: #ef4444; margin-top: auto;">
+            <div class="nav-item-content"><i class="fa-solid fa-right-from-bracket"></i><span>Đăng xuất</span></div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+
+        <!-- TAB TỔNG QUAN -->
+        <div id="tab-tong-quan" class="tab-content active">
+            <div class="welcome-banner">
+                <div>
+                    <div class="banner-title">Chào mừng trở lại!</div>
+                    <div class="banner-sub">Tiếp tục hành trình chinh phục tiếng Đức A1 - B2, rèn luyện tư duy và bứt phá điểm số cùng Triple D Deutsch.</div>
+                </div>
+                <div style="width: 70px; height: 70px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem;">🇩🇪</div>
+            </div>
+
+            <div class="countdown-bar">
+                <div style="font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-bullseye" style="color: #ef4444;"></i> ĐẾM NGƯỢC MỤC TIÊU: <span style="color: var(--primary-blue);">KỲ THI B2 GOETHE 2026</span>
+                </div>
+                <div class="timer-box">
+                    <div class="timer-unit"><span id="c-days">116</span><small>NGÀY</small></div>
+                    <span>:</span>
+                    <div class="timer-unit"><span id="c-hours">09</span><small>GIỜ</small></div>
+                    <span>:</span>
+                    <div class="timer-unit"><span id="c-mins">30</span><small>PHÚT</small></div>
+                    <span>:</span>
+                    <div class="timer-unit"><span id="c-secs">54</span><small>GIÂY</small></div>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                    <button style="padding: 6px 14px; border-radius: 20px; border: 1px solid #e2e8f0; background: #fff; font-weight: 800; font-size: 0.8rem; cursor: pointer;">✨ Thông điệp</button>
+                    <button style="padding: 6px 14px; border-radius: 20px; border: none; background: #dcfce7; color: #15803d; font-weight: 800; font-size: 0.8rem; cursor: pointer;">🎁 Rút quẻ</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label"><i class="fa-solid fa-coins" style="color: #f59e0b;"></i> TRIPLE D COIN</div>
+                    <div class="stat-val" style="color: #f59e0b;" id="stat-coin">329</div>
+                </div>
+                <div class="stat-card"><div class="stat-label"><i class="fa-solid fa-book-open" style="color: #10b981;"></i> SÁCH ĐÃ ĐỌC</div><div class="stat-val" id="stat-books">0</div></div>
+                <div class="stat-card"><div class="stat-label"><i class="fa-solid fa-trophy" style="color: #3b82f6;"></i> THỨ HẠNG</div><div class="stat-val" style="color: #3b82f6;" id="stat-rank">#388</div></div>
+                <div class="stat-card"><div class="stat-label"><i class="fa-solid fa-clock" style="color: #a855f7;"></i> THỜI GIAN HỌC</div><div class="stat-val" id="stat-time">0m</div></div>
+                <div class="stat-card"><div class="stat-label"><i class="fa-solid fa-flame" style="color: #ef4444;"></i> STREAK</div><div class="stat-val" style="color: #ef4444;" id="stat-streak">1</div></div>
+            </div>
+
+            <div class="action-grid">
+                <button class="action-btn" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);" onclick="switchTab('tab-thu-vien', event.target.closest('.action-btn'))"><i class="fa-solid fa-book-open"></i> Đọc Sách</button>
+                <button class="action-btn" style="background: linear-gradient(135deg, #a855f7, #c084fc);" onclick="switchTab('tab-tai-lieu', event.target.closest('.action-btn'))"><i class="fa-solid fa-file-lines"></i> Xem Tài Liệu</button>
+                <button class="action-btn" style="background: linear-gradient(135deg, #f97316, #fb923c);" onclick="openModal('modal-games')"><i class="fa-solid fa-gamepad"></i> Chơi Game</button>
+                <button class="action-btn" style="background: linear-gradient(135deg, #10b981, #34d399);" onclick="openModal('modal-music')"><i class="fa-solid fa-music"></i> Chọn Nhạc</button>
+            </div>
+        </div>
+
+        <!-- TAB LỊCH TRÌNH -->
+        <div id="tab-lich-trinh" class="tab-content">
+            <div class="banner-green">
+                <div>
+                    <div style="font-size: 1.6rem; font-weight: 900;">📅 Lịch Trình Ôn Thi B2 Deutsch</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Theo dõi và đánh dấu tiến độ các chuyên đề ngữ pháp và kỹ năng Goethe</div>
+                </div>
+            </div>
+            <div style="background: white; border-radius: 20px; padding: 30px; margin-top: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);">
+                <div id="schedule-content"></div>
+            </div>
+        </div>
+
+        <!-- TAB THƯ VIỆN -->
+        <div id="tab-thu-vien" class="tab-content">
+            <div class="split-container">
+                <div class="tree-sidebar">
+                    <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="search-books" placeholder="Tìm theo tên sách.." onkeyup="filterBooks()"></div>
+                    <div style="font-size: 0.72rem; font-weight: 900; color: #94a3b8; text-transform: uppercase;">DANH SÁCH SÁCH</div>
+                    
+                    <div class="tree-folder" onclick="toggleBookSub('folder-a-gram', this)">
+                        <span>📁 A-Grammatik (A1-A2)</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </div>
+                    <div id="folder-a-gram" class="tree-file-list" style="display: none;">
+                        <div class="tree-file" onclick="openBookReader('A-Grammatik: Übungsgrammatik Deutsch als Fremdsprache', 'A1 - A2', 'https://archive.org/embed/a-grammatik-pdfdrive', this)">
+                            <span>📖 Giới thiệu & Tổng quan</span>
+                        </div>
+                        <div class="tree-file" onclick="loadBookLesson('A-Grammatik - Bài 1: Nomen und Artikel (Danh từ & Mạn từ)', 'Nomen im Nominativ, Akkusativ und Dativ. Übungen und Beispiele.', this)">
+                            <span>• Kapitel 1: Nomen & Artikel</span>
+                        </div>
+                        <div class="tree-file" onclick="loadBookLesson('A-Grammatik - Bài 2: Verben (Động từ A1-A2)', 'Präsens, Perfekt, Modalverben und Trennbare Verben.', this)">
+                            <span>• Kapitel 2: Verben & Zeiten</span>
+                        </div>
+                    </div>
+
+                    <div class="tree-folder" onclick="toggleBookSub('folder-b-gram', this)">
+                        <span>📁 B-Grammatik (B1-B2)</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </div>
+                    <div id="folder-b-gram" class="tree-file-list" style="display: none;">
+                        <div class="tree-file" onclick="openBookReader('B-Grammatik: Übungsgrammatik Deutsch als Fremdsprache', 'B1 - B2', 'https://archive.org/embed/b-grammatik-pdfdrive', this)">
+                            <span>📖 Giới thiệu & Tổng quan</span>
+                        </div>
+                        <div class="tree-file" onclick="loadBookLesson('B-Grammatik - Bài 1: Passiv (Thể bị động)', 'Vorgangspassiv, Zustandspassiv und Passiv mit Modalverben im B1-B2 Niveau.', this)">
+                            <span>• Kapitel 1: Passivformen</span>
+                        </div>
+                        <div class="tree-file" onclick="loadBookLesson('B-Grammatik - Bài 2: Konjunktiv II (Thức giả định II)', 'Wünsche, Höflichkeit, Irreale Bedingungssätze (hätte, wäre, würde).', this)">
+                            <span>• Kapitel 2: Konjunktiv II</span>
+                        </div>
+                    </div>
+
+                    <div class="tree-folder">📁 (MEM) Từ Vựng A1-B2 Wortschatz <i class="fa-solid fa-caret-right"></i></div>
+                    <div class="tree-folder">📁 (MEM) Giáo Trình Sicher! B1-B2 <i class="fa-solid fa-caret-right"></i></div>
+                </div>
+
+                <div class="viewer-canvas" id="book-viewer">
+                    <div class="viewer-canvas-empty" id="viewer-empty-state">
+                        <div style="font-size: 3.5rem; margin-bottom: 10px;">📚</div>
+                        <h3 style="color: #1e293b; font-weight: 900;">Thư Viện Sách Tiếng Đức</h3>
+                        <p style="font-size: 0.88rem; margin-top: 4px;">Hãy chọn một cuốn sách (A-Grammatik / B-Grammatik) ở danh mục bên trái để bắt đầu học nhé! 🌱</p>
+                    </div>
+                    <iframe id="pdf-frame" style="width: 100%; height: 100%; border: none; display: none;"></iframe>
+                    <div id="lesson-text-content" style="padding: 24px; overflow-y: auto; display: none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB TÀI LIỆU -->
+        <div id="tab-tai-lieu" class="tab-content">
+            <div class="split-container">
+                <div class="tree-sidebar">
+                    <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Tìm theo tên tài liệu"></div>
+                    <div style="font-size: 0.72rem; font-weight: 900; color: #94a3b8; text-transform: uppercase;">DANH SÁCH TÀI LIỆU</div>
+                    <div class="tree-folder" onclick="toggleBookSub('folder-cau-hoi', this)">📁 Bộ Câu Hỏi <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></div>
+                    <div id="folder-cau-hoi" class="tree-file-list" style="display: none;">
+                        <div class="tree-file" onclick="loadDocument('Câu Hỏi Trắc Nghiệm B2', 'Tổng hợp 500+ câu hỏi trắc nghiệm theo từng chủ đề ngữ pháp và từ vựng B2 Goethe.', this)">
+                            <span>• 500+ Câu Hỏi Trắc Nghiệm</span>
+                        </div>
+                    </div>
+                    <div class="tree-folder" onclick="toggleBookSub('folder-de-thi', this)">📁 Đề Thi <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></div>
+                    <div id="folder-de-thi" class="tree-file-list" style="display: none;">
+                        <div class="tree-file" onclick="loadDocument('Đề Thi Goethe B2 2024', 'Đề thi chính thức năm 2024 với đáp án chi tiết.', this)">
+                            <span>• Đề Thi 2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="viewer-canvas">
+                    <div class="viewer-canvas-empty" id="doc-viewer-empty">
+                        <div style="font-size: 3.5rem; margin-bottom: 10px;">📝</div>
+                        <h3 style="color: #1e293b; font-weight: 900;">Kho Tài Liệu</h3>
+                        <p style="font-size: 0.88rem; margin-top: 4px;">Hãy lựa chọn một tài liệu để bắt đầu ôn tập ngay thôi 🌱</p>
+                    </div>
+                    <div id="doc-content" style="padding: 24px; overflow-y: auto; display: none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB ĐANG THUÊ -->
+        <div id="tab-dang-thue" class="tab-content">
+            <div class="rent-header-card">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                    <div style="width: 44px; height: 44px; background: #10b981; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem;">📗</div>
+                    <div>
+                        <div style="font-size: 1.2rem; font-weight: 900; color: #1e293b;">Tủ Sách Đang Thuê</div>
+                        <div style="font-size: 0.8rem; color: #64748b;">Không gian lưu trữ sách & tài liệu học tập cá nhân — Thời hạn 5 ngày/lượt</div>
+                    </div>
+                </div>
+                <input type="text" class="rent-search-input" placeholder="🔍 Tìm kiếm tài liệu trên tủ sách...">
+            </div>
+
+            <div class="filter-bar">
+                <div class="filter-pills">
+                    <button class="pill-btn active">🏷️ Tất cả</button>
+                    <button class="pill-btn">📚 Sách</button>
+                    <button class="pill-btn">📄 Tài liệu</button>
+                </div>
+                <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 700;">📖 <span id="rent-count">0</span> tài liệu đang thuê</div>
+            </div>
+
+            <div class="empty-rent-box">
+                <div style="font-size: 3.5rem; margin-bottom: 12px;">📚✨📖</div>
+                <h3 style="font-size: 1.25rem; font-weight: 900; color: #1e293b; margin-bottom: 6px;">Tủ Sách Chưa Có Tài Liệu</h3>
+                <p style="font-size: 0.85rem; color: #64748b; max-width: 450px; line-height: 1.5; margin-bottom: 20px;">
+                    Tất cả sách và tài liệu bạn thuê (5 ngày) sẽ xuất hiện ngăn nắp trên tủ sách này. Hãy ghé Thư viện để chọn tài liệu học tập ngay!
+                </p>
+                <div style="display: flex; gap: 12px;">
+                    <button style="background: #059669; color: white; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 800; font-size: 0.85rem; cursor: pointer;" onclick="switchTab('tab-thu-vien', event.target)">📗 Khám Phá Thư Viện Sách</button>
+                    <button style="background: #f1f5f9; color: #334155; border: 1px solid #e2e8f0; padding: 10px 20px; border-radius: 10px; font-weight: 800; font-size: 0.85rem; cursor: pointer;" onclick="switchTab('tab-tai-lieu', event.target)">📖 Khám Phá Tài Liệu</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PET WIDGET -->
+    <div class="pet-widget" onclick="openModal('modal-pet')">
+        <div class="pet-speech">Gà Con Chăm Chỉ</div>
+        <div class="pet-avatar">🐥</div>
+    </div>
+
+    <!-- FLOATING ACTIONS -->
+    <div class="floating-actions">
+        <button class="fab-btn" style="background: #fef3c7; color: #d97706;" onclick="openModal('modal-upgrade')"><i class="fa-solid fa-gift"></i></button>
+        <button class="fab-btn" style="background: #10b981;" onclick="openModal('modal-add')"><i class="fa-solid fa-plus"></i></button>
+    </div>
+
+    <!-- MODAL NÂNG CẤP -->
+    <div id="modal-upgrade" class="modal-overlay">
+        <div class="modal-card">
+            <i class="fa-solid fa-xmark close-btn" onclick="closeModal('modal-upgrade')"></i>
+            <div style="text-align: center; margin-bottom: 16px;">
+                <div style="font-size: 2.2rem; margin-bottom: 4px;">⭐</div>
+                <h3 style="font-weight: 900; font-size: 1.25rem; color: #1e293b;">Nâng Cấp Thành Viên</h3>
+                <p style="font-size: 0.8rem; color: #64748b;">Lựa chọn hình thức phù hợp để mở rộng quyền truy cập</p>
+            </div>
+
+            <div class="upgrade-option-card">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <div style="font-size: 1.5rem;">🎓</div>
+                    <div>
+                        <div style="font-weight: 800; font-size: 0.9rem;">Đăng Ký Khóa Học</div>
+                        <div style="font-size: 0.73rem; color: #64748b; max-width: 220px; margin-top: 2px;">Điền form đăng ký học để được hệ thống nâng cấp lên thẻ Student (Học Viên).</div>
+                    </div>
+                </div>
+                <button class="upgrade-btn-green" onclick="alert('Chuyển hướng tới form đăng ký...')">Đăng Ký 🖥️</button>
+            </div>
+
+            <div class="upgrade-option-card green-bg">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <div style="font-size: 1.5rem;">👨‍🎓</div>
+                    <div>
+                        <div style="font-weight: 800; font-size: 0.9rem; color: #065f46;">S-STUDENT Miễn Phí <i class="fa-solid fa-circle-info"></i></div>
+                        <div style="font-size: 0.73rem; color: #047857; max-width: 220px; margin-top: 2px;">Dành cho học sinh chăm chỉ tương tác & PR. Đăng ký để mở tài liệu hoàn toàn miễn phí.</div>
+                    </div>
+                </div>
+                <button class="upgrade-btn-green" style="background: #059669;" onclick="alert('Gửi yêu cầu nâng cấp...')">Yêu Cầu ⭐️</button>
+            </div>
+
+            <div class="upgrade-option-card yellow-bg">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <div style="font-size: 1.5rem;">👑</div>
+                    <div>
+                        <div style="font-weight: 800; font-size: 0.9rem; color: #92400e;">VIP Premium</div>
+                        <div style="font-size: 0.73rem; color: #b45309; max-width: 220px; margin-top: 2px;">Nhận mọi đặc quyền tối cao, mở khóa vô số tài liệu VIP nâng cao và ủng hộ hệ thống.</div>
+                    </div>
+                </div>
+                <button class="upgrade-btn-blue" onclick="alert('Chuyển hướng tới trang thanh toán...')">Nâng Cấp 🚀</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL GAMES -->
+    <div id="modal-games" class="modal-overlay">
+        <div class="modal-card">
+            <i class="fa-solid fa-xmark close-btn" onclick="closeModal('modal-games')"></i>
+            <h3 style="margin-bottom: 16px; font-weight: 900;"><i class="fa-solid fa-gamepad" style="color: #f97316;"></i> Mini-Game Tiếng Đức</h3>
+            <div style="padding: 12px; background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0; cursor: pointer;" onclick="alert('Đang mở Game Trắc Nghiệm!')">
+                <div style="font-weight: 800;">❓ Trắc Nghiệm Từ Vựng B2</div>
+                <div style="font-size: 0.75rem; color: #64748b; margin-top: 4px;">Chơi game và kiếm Triple D Coin</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL MUSIC -->
+    <div id="modal-music" class="modal-overlay">
+        <div class="modal-card">
+            <i class="fa-solid fa-xmark close-btn" onclick="closeModal('modal-music')"></i>
+            <h3 style="margin-bottom: 14px; font-weight: 900; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-headphones" style="color: #10b981;"></i> Trình Phát Nhạc MP3
+            </h3>
+            
+            <div class="mp3-player-card">
+                <div id="player-title" class="now-playing-title">1. 左边画个虫虫 (Về Nhà Ăn Tết Remix)</div>
+                <div id="player-artist" class="now-playing-artist">MOONBOI (杨望舒)</div>
+                <audio id="audio-player" controls autoplay>
+                    <source id="audio-source" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    Trình duyệt của bạn không hỗ trợ audio.
+                </audio>
+            </div>
+
+            <div style="font-size: 0.75rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">DANH SÁCH BÀI HÁT</div>
+            
+            <div class="playlist" id="playlist-container"></div>
+        </div>
+    </div>
+
+    <!-- MODAL PET -->
+    <div id="modal-pet" class="modal-overlay">
+        <div class="modal-card" style="text-align: center;">
+            <i class="fa-solid fa-xmark close-btn" onclick="closeModal('modal-pet')"></i>
+            <div style="font-size: 3rem; margin-bottom: 8px;">🐥</div>
+            <h3 style="font-weight: 900;">Gà Con Chăm Chỉ</h3>
+            <p style="font-size: 0.85rem; color: #64748b; margin: 8px 0 16px;">"Tớ sẽ đồng hành cùng bạn chinh phục Goethe B2!"</p>
+            <button style="width: 100%; padding: 10px; border-radius: 12px; background: #3b82f6; color: white; border: none; font-weight: 800; cursor: pointer;" onclick="alert('Bắt đầu Pomodoro 60 phút...')">🚀 Bắt đầu Pomodoro (60 Phút)</button>
+        </div>
+    </div>
+
+    <!-- MODAL ADD -->
+    <div id="modal-add" class="modal-overlay">
+        <div class="modal-card" style="text-align: center;">
+            <i class="fa-solid fa-xmark close-btn" onclick="closeModal('modal-add')"></i>
+            <div style="font-size: 2.5rem; margin-bottom: 12px;">➕</div>
+            <h3 style="font-weight: 900; margin-bottom: 8px;">Thêm Tài Liệu</h3>
+            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 16px;">Tính năng này đang được phát triển.</p>
+            <button style="width: 100%; padding: 10px; border-radius: 12px; background: #10b981; color: white; border: none; font-weight: 800; cursor: pointer;" onclick="closeModal('modal-add')">Đóng</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
